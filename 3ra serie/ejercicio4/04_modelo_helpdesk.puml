@@ -1,0 +1,47 @@
+@startuml
+
+class User {
+    -id: int
+    -name: str
+    -email: str
+    -role: str
+    +__str__(): str
+}
+
+class Ticket {
+    -id: int
+    -title: str
+    -category: str
+    -priority: str
+    -status: str
+    +change_status(): bool
+}
+
+class Comment {
+    -id: int
+    -text: str
+    -created_at: str
+    +__str__(): str
+}
+
+class History {
+    -id: int
+    -action: str
+    -created_at: str
+    +__str__(): str
+}
+
+class Article {
+    -id: int
+    -title: str
+    -content: str
+    +__str__(): str
+}
+
+User "1" -- "0..*" Ticket : solicitante
+User "0..1" -- "0..*" Ticket : tecnico
+Ticket "1" *-- "0..*" Comment
+Ticket "1" *-- "0..*" History
+User "1" -- "0..*" Article : autor
+
+@enduml
